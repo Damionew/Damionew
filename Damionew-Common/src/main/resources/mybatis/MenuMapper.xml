@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.common.mapper.MenuMapper">
+	<select id="parentMenu" resultType="com.common.model.Menu">
+		SELECT * FROM gra_menu WHERE menuLevel = "1" order by menuId
+	</select>
+	
+	<select id="childMenu" resultType="com.common.model.Menu">
+		SELECT * FROM gra_menu WHERE parentId = #{parentId} order by menuId
+	</select>
+	
+	<select id="selectMenuByName" resultType="com.common.model.Menu">
+		select * from gra_menu where menuName = #{menuName}
+	</select>
+	
+	<select id="selectParentMenuByName" resultType="com.common.model.Menu">
+		select * from gra_menu where menuName = #{parentMenu}
+	</select>
+	
+	<insert id="insertChildMenu">
+		insert into gra_menu (menuName,parentId,url,icon,menuLevel) 
+		values
+		(#{menuName},#{parentId},#{url},#{icon},#{menuLevel})
+	</insert>
+	
+	<select id="deleteChildMenu">
+		delete from gra_menu where menuName = #{menuName}
+	</select>
+	
+	<update id="updateMenuByName">
+		update gra_menu set menuName = #{newMenuName},url = #{menuUrl} where menuName = #{oldMenuName}
+	</update>
+</mapper>

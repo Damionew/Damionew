@@ -19,8 +19,10 @@
 	<!-- 引入SpringBoot模块 -->
 	<modules>
 		<module>Damionew-Eureka</module>
-    <module>Damionew-Hi</module>
-  </modules>
+    	<module>Damionew-Hi</module>
+    	<module>Damionew-Auth</module>
+    	<module>Damionew-Common</module>
+	</modules>
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -39,6 +41,29 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>  
+            <groupId>org.springframework.boot</groupId>  
+            <artifactId>spring-boot-devtools</artifactId>  
+            <scope>provided</scope>  
+            <optional>true</optional>  
+		</dependency>
+		<!-- swagger -->
+	    <dependency>
+	        <groupId>io.springfox</groupId>
+	        <artifactId>springfox-swagger2</artifactId>
+	        <version>2.6.1</version>
+	    </dependency>
+	    <!-- swagger-ui -->
+	    <dependency>
+	        <groupId>io.springfox</groupId>
+	        <artifactId>springfox-swagger-ui</artifactId>
+	        <version>2.6.1</version>
+	     </dependency>
+	     <dependency>
+        	<groupId>com.alibaba</groupId>
+        	<artifactId>fastjson</artifactId>
+        	<version>1.2.47</version>
+        </dependency>
 	</dependencies>
 	
     <dependencyManagement>

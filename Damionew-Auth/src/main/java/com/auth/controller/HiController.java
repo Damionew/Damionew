@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.auth.feign.CommonFeign;
 import com.auth.feign.ServiceHi;
@@ -21,11 +20,9 @@ public class HiController {
 	public String sayHi() {
 		return serviceHi.sayHi();
 	}
-	
-	@GetMapping(value = "/login")
+	@ResponseBody
+	@GetMapping(value = "/hia")
 	public String loginPage() {
-		System.out.println("login");
-		commonFeign.transactionalTest();
-		return "login";
+		return commonFeign.sayHia();
 	}
 }

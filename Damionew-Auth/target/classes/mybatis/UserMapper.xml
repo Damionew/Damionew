@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.auth.mapper.UserMapper">
+
+	<insert id="insertTest">
+		insert into gm_user (userid,username,password) values (4,3,4)
+	</insert>
+	
+	<insert id="insertUser">
+		insert into gm_user (userid,username,password) values (#{userid},3,4)
+	</insert>
+	
+	<select id="findUserByUserName" resultType="com.auth.model.User">
+		select * from gm_user where username = #{username}
+	</select>
+	
+	<select id="findUserRoleByUserName" resultType="Map">
+		SELECT 
+	    gm_user.`userid`,gm_user.`username`,gm_user.`password`, gm_user_role.`roleid`,gm_role.`rolename`,gm_role.`rolecode`,gm_role.`roledescription`
+	  FROM
+	    gm_user 
+	    LEFT JOIN gm_user_role 
+	      ON gm_user.`userid` = gm_user_role.userid 
+	  LEFT JOIN gm_role 
+	    ON gm_user_role.roleid = gm_role.`roleid` 
+	    WHERE gm_user.`username`= #{username}
+	</select>
+	
+	
+</mapper>

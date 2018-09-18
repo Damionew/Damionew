@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
@@ -32,11 +33,13 @@ public class WeatherController {
 	@ApiOperation(value = "获取天气信息",notes ="通过和风天气接口获取并处理天气信息")
 	@ResponseBody
 	@RequestMapping(value = "/weatherGetWeatherInfo",method = RequestMethod.GET)
-	public String locationTransform(HttpServletRequest request) throws IOException {
+	public String locationTransform(@RequestParam("lng") String lng,@RequestParam("lat") String lat) throws IOException {
 		// 经度
-		String lng = request.getParameter("lng");
+//		String lng = request.getParameter("lng");
 		// 纬度
-		String lat = request.getParameter("lat");
+//		String lat = request.getParameter("lat");
+//		String lng = "118.77807441";
+//		String lat = "32.0572355";
 		System.out.println("lng:::::"+lng);
 		// 登录成功，将用户登录信息插入历史表中
 		Map<String, String> loginHistory = new HashMap<String, String>(16);

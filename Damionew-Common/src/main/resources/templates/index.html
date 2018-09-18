@@ -74,7 +74,7 @@
                 </div>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse" style="margin-left:14%">
+            <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse" style="margin-left:8%">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i style="font-size:20px;" class="icon-conversation"></i><div class="noft-red">23</div></a>
@@ -184,13 +184,9 @@
     <!-- END OF SIDE MENU -->
     <!--  PAPER WRAP -->
     <div class="wrap-fluid" >
-    	<iframe id="placeholder" name="iframe" src="familyPhoto" frameborder="0" align="left" style="width:100%;height:800px;margin-top: 10px;" scrolling="no">
+    	<iframe id="placeholder" name="iframe" src="" frameborder="0" align="left" style="width:100%;height:800px;margin-top: 10px;" scrolling="no">
         </iframe>
     </div>
-     <div id="menu">
-     	<div class="menu">派单</div>
-     	<div class="menu">截屏</div>
-	 </div>
     <!--  END OF PAPER WRAP -->
     <!-- RIGHT SLIDER CONTENT -->
     <!-- END OF RIGHT SLIDER CONTENT-->
@@ -213,33 +209,6 @@
     <script type="text/javascript" src="assets/js/gage/justgage.js"></script>
     <script src="assets/js/jhere-custom.js"></script>
     <script type="text/javascript">
-	document.getElementById('placeholder').onload = function(){
-		 var menu = document.getElementById("menu");
-		 window.document.getElementById('placeholder').contentWindow.document.oncontextmenu = function(e) {
-			
-		  var e = e || window.event;
-		  //鼠标点的坐标
-		  var oX = e.clientX;
-		  var oY = e.clientY;
-		  //菜单出现后的位置
-		  menu.style.display = "block";
-		  menu.style.left = oX + "px";
-		  menu.style.top = oY + "px";
-		  //阻止浏览器默认事件
-		  return false;//一般点击右键会出现浏览器默认的右键菜单，写了这句代码就可以阻止该默认事件。
-		 }
-		
-	}
-	window.document.getElementById('placeholder').contentWindow.document.onclick = function(e) {
-		alert(1)
-		debugger
-	   var e = e || window.event;
-	   menu.style.display = "none"
-	  }
-	 menu.onclick = function(e) {
-	  var e = e || window.event;
-	  e.cancelBubble = true;
-	 }
 	    $(document).ready(function getPosition(){
 	    	var countVistors = 0;
 	    	var geolocation = new BMap.Geolocation();
@@ -257,7 +226,7 @@
 	    			    }      
 	    			});
 	    			$.ajax({
-	    				url : "weather/uploadLocation",
+	    				url : "getWeatherInfo",
 	    				data : {
 	    					lng : r.point.lng,
 	    					lat : r.point.lat

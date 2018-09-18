@@ -11,10 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.auth.feign.CommonFeign;
-import com.netflix.infix.lang.infix.antlr.EventFilterParser.regex_predicate_return;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -42,9 +40,9 @@ public class LoginController {
 		return "login";
 	}
 	
-	@ResponseBody
 	@GetMapping(value = "/index")
 	public String index() {
-		return commonFeign.commonIndex();
+//		return commonFeign.commonIndex();
+		return "redirect:http://localhost:8004/index";
 	}
 }

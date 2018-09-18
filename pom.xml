@@ -23,7 +23,8 @@
     	<module>Damionew-Auth</module>
     	<module>Damionew-Common</module>
     <module>Damionew-Weather</module>
-  </modules>
+    <module>Damionew-Zuul</module>
+	</modules>
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

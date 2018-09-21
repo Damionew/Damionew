@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>成员管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap/bootstrap.min.css"/>
+	<link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap-table.min.css"/>
+    <style type="text/css">
+    	#addIncomeModal,#editIncomeModal{margin-top:5%;margin-left:5%;margin-right:5%}
+    	.second,.third{
+            display: none;
+        }
+		.container{
+			margin-top:100px;
+		}
+		body{
+        background:transparent;
+    	}
+    	section{
+    		margin:0px 20px;
+    	}
+    </style>
+</head>
+<body>
+	<section class="content-header">
+		<h4>成员管理</h4>
+	</section> 
+	<section class="content table-content">
+		<form class="form-inline" >
+		<!-- 工具栏 -->
+		<div id="toolbar">
+			<input type="button" value="添加成员" id="addBtn" class="btn btn-primary" onclick="addMember()"></input>
+			<input type="button" value="修改成员" id="editBtn" class="btn btn-success" onclick="editIncomeMember()"></input>
+			<input type="button" value="删除成员" id="deleteBtn" class="btn btn-info" onclick="deleteMember()"></input>
+		</div>
+		<!-- bootstrapTable -->
+		</form>
+		<table id="dataGrid">
+		</table>
+	</section>
+</body>
+<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="/js/member.js"></script>
+<script type="text/javascript">
+function addMember(){
+	window.location.href="/gradesign/member/add";
+}
+</script>
+</html>

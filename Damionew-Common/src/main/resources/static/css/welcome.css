@@ -1,0 +1,95 @@
+
+body {
+    background: #f5f6f7;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.left-menu, .btns, .toolbar-li {
+    list-style: none;
+    float: left
+}
+
+.newsfix {
+    width: 100px; /*margin-top: 50px;*/
+    float: left;
+    background-color: white
+}
+
+.newsframe {
+    float: left;
+    margin-left: 20px;
+    margin-top: 50px;
+    width: 89%
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+    background-color: #f44444;
+}
+
+#nav li a:hover{
+    background-color: #f44444;
+    color: #fff;
+}
+.clearfix {
+    clear: both;
+}
+
+.bafs-toolbar {
+    /*background-color: red;*/
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .05);
+    height: 50px;
+    line-height: 50px;
+}
+
+.container {
+    /*background-color:green ;*/
+}
+
+.right-login {
+    float: right;
+}
+
+.right-login .login {
+    color: #999;
+}
+
+/*.toolbar-li{
+    background-color: pink;
+}*/
+.left-menu {
+    padding-left: 0;
+
+}
+
+.left-menu a {
+    margin-left: -12px;
+}
+
+.login:hover {
+    color: #3F3F3F;
+    text-decoration: none;
+}
+
+/*左侧菜单栏*/
+.container li a {
+    color: #707070;
+    text-align: center;
+
+}
+.newsfix{
+    margin-left: 0;
+    padding-left:0;
+}
+/*右侧iframe*/
+.newsframe {
+    width: 600px;
+    height: 600px;
+    background: #fff;
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 13%;
+    right: 0;
+}

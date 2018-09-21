@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>成员管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="/gradesign/css/bootstrap.min.css"/>
+	<link href="/gradesign/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen"/>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" type="text/css" href="/gradesign/css/bootstrap-table.min.css"/>
+    <style type="text/css">
+    	#addIncomeModal,#editIncomeModal{margin-top:5%;margin-left:5%;margin-right:5%}
+    	.second,.third{
+            display: none;
+        }
+		.container{
+			margin-top:7%;
+		}
+		body{
+        background:transparent;
+   		}
+   		.form-group{
+   			margin-top:10px;
+   		}
+   		#content{width:40%;margin-left:30%;border:1px solid #f4f4f4}
+   		#memberAdd{margin:5%}
+    </style>
+</head>
+<body>
+<div class="container">
+	<div id="content">
+		<div id="memberAdd">
+		<form>
+			<div class="form-group" style="text-align:center">
+				<h3 style="align:center">添加成员信息</h3>
+			</div>
+			<div class="form-group">
+				<label for="memberAccount">成员账号</label>
+				<input type="text" id="memberAccount" class="form-control" placeholder="MemberAccount"/>
+			</div>
+			<div class="form-group">
+				<label for="memberName">成员昵称</label>
+				<input type="text" id="memberName" class="form-control" placeholder="MemberName"/>
+			</div>
+			<div class="form-group" style="text-align:center">
+				<button type="button" class="btn btn-primary"  id="memberAddBtn" onclick="sbmit()">提交</button>
+			</div>
+		</form>
+	</div>
+	</div>
+	
+</div>
+</body>
+<script type="text/javascript" src="/gradesign/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/gradesign/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/gradesign/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/gradesign/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+<!-- Latest compiled and minified Locales -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript">
+function sbmit(){
+	var params = {};
+	params.memberAccount = $("#memberAccount").val();
+	params.memberName = $("#memberName").val();
+	$.ajax({
+		url:"/gradesign/member/memberAdd",
+		method:"post",
+		data:params,
+		dataType:"json",
+		success:function(){
+			alert("提交成功");
+			window.location.href="/gradesign/member/index";
+		},
+		error:function(){
+			alert("系统错误");
+		}
+	});
+}
+</script>
+</html>

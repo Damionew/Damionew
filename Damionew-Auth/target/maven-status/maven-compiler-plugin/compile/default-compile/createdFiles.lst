@@ -1,7 +1,0 @@
-com\auth\security\WebSecurityConfig.class
-com\auth\AuthApplication.class
-com\auth\controller\HiController.class
-com\auth\feign\ServiceHi.class
-com\auth\controller\LoginController.class
-com\auth\feign\CommonFeign.class
-com\auth\security\MyPasswordEncoder.class

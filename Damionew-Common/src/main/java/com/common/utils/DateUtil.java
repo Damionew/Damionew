@@ -8,7 +8,14 @@ public class DateUtil {
 	public static String dateFormate1() {
 		Date date = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String currentDate1 = dateFormat.format(date);
-		return currentDate1;
+		String currentDate = dateFormat.format(date);
+		return currentDate;
+	}
+	
+	public static String dateFormate2() {
+		Date date = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String currentDate = dateFormat.format(date);
+		return currentDate;
 	}
 }

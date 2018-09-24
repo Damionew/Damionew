@@ -16,7 +16,7 @@
 			margin-top:100px;
 		}
 		body{
-        background:transparent;
+        background:#ffffff;
     	}
     	section{
     		margin:0px 20px;
@@ -31,15 +31,97 @@
 		<form class="form-inline" >
 		<!-- 工具栏 -->
 		<div id="toolbar">
-			<input type="button" value="添加成员" id="addBtn" class="btn btn-primary" onclick="addMember()"></input>
-			<input type="button" value="修改成员" id="editBtn" class="btn btn-success" onclick="editIncomeMember()"></input>
-			<input type="button" value="删除成员" id="deleteBtn" class="btn btn-info" onclick="deleteMember()"></input>
+			<button type="button" id="addBtn" class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">添加用户</button>
 		</div>
 		<!-- bootstrapTable -->
 		</form>
 		<table id="dataGrid">
 		</table>
 	</section>
+
+	<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="exampleModalLabel">添加用户</h4>
+	      </div>
+	      <div class="modal-body">
+	        <form>
+	          <div class="form-group">
+	            <label for="recipient-name" class="control-label">用户名:</label>
+	            <input type="text" class="form-control" id="username">
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">密码:</label>
+	            <input class="form-control" id="password"></input>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">昵称:</label>
+	            <input class="form-control" id="nickname"></input>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">简介:</label>
+	            <textarea class="form-control" id="description"></textarea>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">头像:</label>
+	            <input type="file" id="icon">
+    			<p class="help-block">Example block-level help text here.</p>
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" onclick="addUser()">Confirm</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="exampleModalLabel">编辑用户</h4>
+	      </div>
+	      <div class="modal-body">
+	        <form>
+	       	 <div class="form-group">
+	            <label for="recipient-name" class="control-label">userid:</label>
+	            <input type="text" class="form-control" id="userid2">
+	          </div>
+	          <div class="form-group">
+	            <label for="recipient-name" class="control-label">用户名:</label>
+	            <input type="text" class="form-control" id="username2">
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">密码:</label>
+	            <input class="form-control" id="password2"></input>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">昵称:</label>
+	            <input class="form-control" id="nickname2"></input>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">简介:</label>
+	            <textarea class="form-control" id="description2"></textarea>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">头像:</label>
+	            <input type="file" id="icon2">
+    			<p class="help-block">Example block-level help text here.</p>
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" onclick="updateUser()">Confirm</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </body>
 <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
@@ -47,10 +129,193 @@
 <script type="text/javascript" src="/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 <script type="text/javascript" src="/js/bootstrap-table.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap-table-zh-CN.min.js"></script>
-<script type="text/javascript" src="/js/member.js"></script>
 <script type="text/javascript">
-function addMember(){
-	window.location.href="/gradesign/member/add";
-}
+	$(function(){
+		initDataGrid();
+	});
+	function initDataGrid(){
+		//创建bootstraptable
+		$("#dataGrid").bootstrapTable({
+			method:"get",
+			cache: false,         
+			//缺失无法执行queryParams,传递Page参数
+			contentType : "application/x-www-form-urlencoded",
+			dataType : "json",
+			url : "/user/userQuery",
+			queryParams : queryParam,
+			pagination : true,//显示分页条：页码，条数等
+			striped : true,//隔行变色
+			pageNumber : 1,//首页页码
+			pageSize : 10,//分页，页面数据条数
+			pageList: [10,20,30,40],
+			uniqueId : "id",//Indicate an unique identifier for each row
+			sidePagination : "server",//在服务器端分页
+			height:dataGrid.height,
+			sortName : "userid",
+			toolbar : "#toolbar",//工具栏
+			columns : [{
+				checkbox : "true",
+				field : "box",
+				width : 50
+			},{
+				title : "id",
+				field : "userid",
+				visible : false
+			},{
+				title : "用户名",
+				field : "username"
+			},{
+				title : "昵称",
+				field : "nickname"
+			},{
+				title : "创建日期",
+				field : "createDate"
+			},{
+				title : "头像",
+				field : "icon"
+			},{
+				title : "介绍",
+				field : "description"
+			},{
+				title : "操作",
+				field : "userid",
+				formatter : operation
+			}],
+			search : true,
+			searchOnEnterkey : true,
+			showRefresh : true,
+			showToggle : true
+		});
+	}
+	function operation(value,row,index){
+		var id = value;
+		var result = "";
+        result += "<a href='javascript:;' class='btn btn-xs blue' onclick=\"editUserById('" + id + "')\" title='编辑'><span class='glyphicon glyphicon-pencil'></span></a>";
+        result += "<a href='javascript:;' class='btn btn-xs red' onclick=\"deleteUserById('" + id + "')\" title='删除'><span class='glyphicon glyphicon-remove'></span></a>";
+        return result;
+	}
+	function queryParam(params){
+		var param = {
+				limit : this.limit,//页面大小
+				offset : this.offset,//页码
+				pageNumber : this.pageNumber,
+				pageSize : this.pageSize,
+				sortName : this.sortName,
+				sortOrder : this.sortOtder
+		};
+		return param;
+	}
+	//修改
+	function editUserById(userid){
+		$.ajax({
+			url : "/user/queryUserById",
+			dataType:"json",
+			traditional: true,//属性在这里设置
+			method:"post",
+			data:{
+				"userid":userid
+			},
+			success : function(res){
+				$("#userid2").val(res.result.userid);
+				$("#username2").val(res.result.username);
+				$("#password2").val(res.result.password);
+				$("#nickname2").val(res.result.nickname);
+				$("#description2").val(res.result.description);
+				$('#editUserModal').modal('show');
+			},
+			error : function(){
+				alert("系统错误！");
+			}
+		})
+	}
+	//更新用户
+	function updateUser(){
+		$.ajax({
+			url : "/user/updateUserById",
+			dataType:"json",
+			traditional: true,//属性在这里设置
+			method:"post",
+			data:{
+				userid: $("#userid2")[0].value,
+				username : $("#username2")[0].value,
+				password : $("#password2")[0].value,
+				nickname : $("#nickname2")[0].value,
+				icon : $("#icon2")[0].value,
+				description : $("#description2")[0].value
+			},
+			success : function(res){
+				alert("修改成功");
+				$('#editUserModal').modal('hide');
+				$("#dataGrid").bootstrapTable("refresh");
+			},
+			error : function(){
+				alert("系统错误！");
+			}
+		})
+	}
+		
+	//删除用户
+	function deleteUserById(userid){
+			$.ajax({
+				url : "/user/deleteUser",
+				dataType:"json",
+				traditional: true,//属性在这里设置
+				method:"post",
+				data:{
+					"userid":userid
+				},
+				success : function(res){
+					if(res.result == 0){
+						alert("删除失败！");
+						return false;
+					}
+					$("#dataGrid").bootstrapTable("refresh");
+					alert("删除成功！");
+				},
+				error : function(){
+					alert("系统错误！");
+				}
+			})
+		}
+	//点击取消后清空表单中已写信息
+		$("#addUserModal").on("hidden.bs.modal", function() {
+		    $(this).removeData("bs.modal");
+		});
+
+		$('body').on('hidden.bs.modal', '.modal', function () {
+		    $("#addUserModal").removeData('bs.modal'); 
+		    $(this).removeData('bs.modal'); 
+		});
+
+	function addUser(){
+		$.ajax({
+			url : "/user/addUser",
+			dataType:"json",
+			traditional: true,//属性在这里设置
+			method:"post",
+			data:{
+				username : $("#username")[0].value,
+				password : $("#password")[0].value,
+				nickname : $("#nickname")[0].value,
+				icon : $("#icon")[0].value,
+				description : $("#description")[0].value
+			},
+			success : function(res){
+				if(res.result == 0){
+					alert("添加失败！");
+					resetAddUserModal();
+					return false;
+				}
+				alert("添加成功！");
+				$("#addUserModal").modal('hide');
+				$("#dataGrid").bootstrapTable("refresh");
+				resetAddUserModal();
+			},
+			error : function(){
+				alert("系统错误！");
+			}
+		})
+		
+	}
 </script>
 </html>

@@ -22,9 +22,11 @@
     	<module>Damionew-Hi</module>
     	<module>Damionew-Auth</module>
     	<module>Damionew-Common</module>
-    <module>Damionew-Weather</module>
-    <module>Damionew-Zuul</module>
-	</modules>
+    	<module>Damionew-Weather</module>
+    	<module>Damionew-Ana</module>
+    	<module>Damionew-Zuul</module>
+    <module>Damionew-Door</module>
+  </modules>
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -55,6 +55,7 @@
 </head>
 <body> 
     <!-- Preloader -->
+     <div class="contt">
     <div id="preloader">
         <div id="status">&nbsp;</div>
     </div>
@@ -190,7 +191,7 @@
     <!--  END OF PAPER WRAP -->
     <!-- RIGHT SLIDER CONTENT -->
     <!-- END OF RIGHT SLIDER CONTENT-->
-    
+   </div>
     <script type="text/javascript" src="assets/js/progress-bar/src/jquery.velocity.min.js"></script>
     <script src="assets/js/progress-bar/number-pb.js"></script>
     <script src="assets/js/progress-bar/progress-app.js"></script>
@@ -208,7 +209,20 @@
     <script type="text/javascript" src="assets/js/gage/raphael.2.1.0.min.js"></script>
     <script type="text/javascript" src="assets/js/gage/justgage.js"></script>
     <script src="assets/js/jhere-custom.js"></script>
+    <script type="text/javascript" src="/js/jquery.nicescroll.min.js"></script>
     <script type="text/javascript">
+    $('#contt').niceScroll({
+        cursorcolor: "red",//滚动条的颜色
+        cursoropacitymax: 1, //滚动条的透明度，从0-1
+        touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+        cursorwidth: "5px", //滚动条的宽度
+        cursorborder: "0", // 游标边框css定义
+        cursorborderradius: "5px",//以像素为光标边界半径  圆角
+　　　　　　//autohidemode最好设置为true，这样切换的时候会自动隐藏滚动条
+        autohidemode: true, //是否隐藏滚动条  true的时候默认不显示滚动条，当鼠标经过的时候显示滚动条
+        zindex:"auto",//给滚动条设置z-index值
+        railpadding: { top:0, right:0, left:0, bottom:0 }//滚动条的位置
+    });
 	    $(document).ready(function getPosition(){
 	    	var countVistors = 0;
 	    	var geolocation = new BMap.Geolocation();

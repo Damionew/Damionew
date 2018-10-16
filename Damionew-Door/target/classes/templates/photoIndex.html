@@ -8,9 +8,7 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="renderer" content="webkit">
     <!-- 目前仅限360急速浏览 webkit:急速  ie-comp:ie兼容模式   ie-stand: ie标准模式 -->
-    <title>中岚签证</title>
-    <meta name="keywords" content="美国签证 加急 预约 面谈 代办">
-    <meta name="description" content="一家专门从事美国签证咨询的网站">
+    <title>相册</title>
     <!-- Bootstrap中文字体版 -->
     <link href="http://www.clantrip.com/static/bootstrap-font/css/bootstrap.min.css" rel="stylesheet">
     <!-- 自定义样式 -->
@@ -25,6 +23,9 @@
     <script src="http://www.clantrip.com/static/js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="http://www.clantrip.com/static/bootstrap-font/js/bootstrap.min.js"></script>
+    <link type="text/css" href="/css/zzsc.css" rel="stylesheet" />
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/zzsc.js"></script>
 </head>
 
 <body>
@@ -41,18 +42,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" style="padding:0 0 0 15px;" href="http://www.clantrip.com"><img alt="Brand" style="max-width:130px;"
-                                                                                  src="http://www.clantrip.com/static/images/logo.png"></a>
+                <!-- <a class="navbar-brand" style="padding:0 0 0 15px;" href=""> -->
+                <h3 style="    margin-top: 11px;">Photo</h3>
+                <!-- <img alt="Brand" style="max-width:130px;" src=""></a> -->
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                 <ul class="nav navbar-nav navbar-right">
-                    <li  class="active"><a href="http://www.clantrip.com">首页 <span class="sr-only">(current)</span></a><p class="line-top hidden-xs"></p></li>
-                                        <li ><a href="http://www.clantrip.com/index.php?m=content&c=index&a=lists&catid=6">签证指南</a></li>
-                                        <li ><a href="http://www.clantrip.com/index.php?m=content&c=index&a=lists&catid=13">签证加急</a></li>
-                                        <li ><a href="http://www.clantrip.com/index.php?m=content&c=index&a=lists&catid=9">签证服务</a></li>
-                                        <li ><a href="http://www.clantrip.com/index.php?m=content&c=index&a=lists&catid=10">签证资讯</a></li>
-                                        <li ><a href="http://www.clantrip.com/index.php?m=content&c=index&a=lists&catid=14">资料下载</a></li>
+                    <li  class="active"><a href="">相册 <span class="sr-only">(current)</span></a><p class="line-top hidden-xs"></p></li>
+                                        <li ><a href="">商城</a></li>
+                                        <li ><a href="">视频</a></li>
+                                        <li ><a href="">书籍</a></li>
+                                        <li ><a href="">其他</a></li>
+                                        <li ><a href="">其他2</a></li>
                                     </ul>
                             </div>
             <!-- /.navbar-collapse -->
@@ -63,152 +65,41 @@
 <!-- <!-- 整站通用的头部及导航条 -->
 
 <!-- 全屏轮播图 -->
-<div id="carousel-example-generic" class="carousel slide my-slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    </ol>
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <a target="_blank" href="http://www.clantrip.com/index.php?m=content&c=index&a=lists&catid=9">
-                <img src="http://www.clantrip.com/static/images/banner1.jpg" alt="美国签证代办">
-            </a>
-        </div>
-        <div class="item">
-            <a target="_blank" href="http://www.clantrip.com/index.php?m=content&c=index&a=lists&catid=13">
-                <img src="http://www.clantrip.com/static/images/banner2.jpg" alt="美国签证加急预约">
-            </a>
-        </div>
-    </div>
+<div id="carousel-example-generic" class="carousel slide my-slide" data-ride="carousel" style="margin-top: 100px;">
+   <div class="box">
+	<div class="picbox" style="height:155px" >
+		<ul class="piclist mainlist" >
+			<li th:each = "roll : ${roll}"><a href="" target="_blank"><img th:src="${roll.photo_url}" width="220" height="155" /></a></li>
+		</ul>
+        <ul class="piclist swaplist"></ul>
+	</div>
+	<div class="og_prev"></div>
+	<div class="og_next"></div>
+</div>
 </div>
 <!-- 全屏轮播图 -->
 <!-- 我们的成绩 -->
-<div class="index-row our-data">
+<div class="index-row our-data" style="padding:0px">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 main-title">
-                <h2 class="h1">我们的成绩</h2>
-
-                <p class="line line-big"></p>
-
-                <h2>
-                    <small>2017年1月1日至2017年12月30日，我们的接待数据。</small>
-                </h2>
+            <div class="col-sm-12 main-title" style="margin-bottom: 0px">
+                <h2 class="h1" style="margin-top: 10px">我们的相册</h2>
+                <p class="line line-big" style="margin-top: 20px"></p>
             </div>
-            <div class="col-sm-3 our-data-item sum-apply">
-                <div class="number-wrapper">
-                    <span id="sum-apply" class="run-number" data-to="240">26,517</span>
-                </div>
-                <h4 class="title">累计受理申请</h4>
-            </div>
-            <div class="col-sm-3 our-data-item sum-rate">
-                <div class="number-wrapper">
-                    <span id="sum-rate" class="run-number" data-to="240">98.6</span>%
-                </div>
-                <h4 class="title">综合通过率</h4>
-            </div>
-            <div class="col-sm-3 our-data-item sum-urgent">
-                <div class="number-wrapper">
-                    <span id="sum-urgent" class="run-number" data-to="240">7,368</span>
-                </div>
-                <h4 class="title">加急申请人数</h4>
-            </div>
-            <div class="col-sm-3 our-data-item urgent-rate">
-                <div class="number-wrapper">
-                    <span id="urgent-rate" class="run-number" data-to="240">100</span>%
-                </div>
-                <h4 class="title">加急成功率</h4>
-            </div>
+            <div class="col-xs-6 col-md-3" th:each = "album : ${album}">
+            	<div style = "height:150px">
+            		<a href="#" class="thumbnail">
+				      <img th:src="${album.photo_url}" alt="images/8.jpg" width="220" height="105">
+				    </a>
+            	</div>
+			    <div class="caption">
+			        <h3 th:text = "${album.album_name}"></h3>
+			        <p th:text = ${album.album_desc}></p>
+			     </div>
+			 </div>
         </div>
     </div>
 </div>
-
-<!-- 数字滚动插件 -->
-<script type="text/javascript" src="http://www.clantrip.com/static/js/countUp.min.js"></script>
-<script type="text/javascript">
-    $(function () {
-        /**通用-banner大图自定义缩放**/
-        var zoomWidth = 992; //缩放阀值992px, 即所有小于992px的视口都会对原图进行缩放, 只是缩放比例不同
-        var maxWidth = 1920; //最大宽度1920px
-        var ratio = 1; //缩放比例
-        var viewWidth = window.innerWidth; // 视口宽度
-        var zoomSlider = function () {
-            if (viewWidth < 768) { //当视口小于768时(移动端), 按992比例缩放
-                ratio = viewWidth / zoomWidth; //视口宽度除以阀值, 计算缩放比例
-            } else if (viewWidth < zoomWidth) { //当视口界于768与992之间时, bootstrap主宽度为750, 这区间图片缩放比例固定.
-                ratio = zoomWidth / (zoomWidth + (zoomWidth - 750));
-            } else { // PC端不缩放
-                ratio = 1;
-            }
-            //ratio = viewWidth / zoomWidth; //视口宽度除以阀值, 计算缩放比例
-            //ratio = (ratio<=1) ? ratio : 1; //如果比例值大于1, 说明视口宽度高于阀值, 则不进行任何缩放
-            var width = maxWidth * ratio; //缩放宽度
-            $(".my-slide img").each(function () {
-                $(this).css({
-                    "width": width,
-                    "max-width": width,
-                    "margin-left": -(width - viewWidth) / 2
-                }); //图片自适应居中, 图片宽度与视口宽度差除以2的值, 设置为负margin
-            });
-        }
-        /**通用-我们的成绩等数字滚动特效**/
-        var numOptions = {
-            useEasing: true,
-            useGrouping: true,
-            separator: ',',
-            decimal: '.',
-            prefix: '',
-            suffix: ''
-        }
-        var numGroup = new Array(
-                new CountUp("sum-apply", 0, 18397, 0, 2.5, numOptions),
-                new CountUp("sum-rate", 0, 98.8, 1, 2.5, numOptions),
-                new CountUp("sum-urgent", 0, 3273, 0, 2.5, numOptions),
-                new CountUp("urgent-rate", 0, 100, 0, 2.5, numOptions)
-        );
-        var runNumber = function () {
-            $('.run-number').each(function () {
-                var oTop = $(this).offset().top;
-                var sTop = $(window).scrollTop();
-                var oHeight = $(this).height();
-                var oIndex = $(this).index('.run-number');
-                //console.log(oTop+'\r\n'+sTop+'\r\n'+oHeight+'\r\n'+$(window).height());
-                if (oTop >= sTop && (oTop + (oHeight / 2)) < (sTop + $(window).height())) {
-                    numGroup[oIndex].start();
-                    //console.log('元素'+$(this).index('.run-number')+'可见');
-                } else {
-                    //console.log('元素'+$(this).index('.run-number')+'不可见');
-                }
-            });
-        }
-
-        zoomSlider(); //页面加载时初始化并检查一次.
-        runNumber(); //页面加载时判断一次
-        /**视口发生变化时的事件**/
-        $(window).resize(function () {
-            viewWidth = window.innerWidth; // 重置视口宽度
-            zoomSlider();//判断是否绽放banner
-            runNumber();//判断是否执行动画
-        });
-        /**滚动事件**/
-        $(window).scroll(function () {
-            runNumber();
-        });
-
-        //首页-我们的服务
-        $('.card-item').each(function () {
-            $(this).mouseover(function () {
-                $(this).addClass('card-active');
-                $(this).siblings().removeClass('card-active');
-                $(this).find(".btn").addClass('btn-outline-inverse').removeClass('btn-outline-blue');
-                $(this).siblings().find(".btn").addClass('btn-outline-blue').removeClass('btn-outline-inverse');
-            });
-        });
-
-    });
-</script>
 
 </body>
 </html>

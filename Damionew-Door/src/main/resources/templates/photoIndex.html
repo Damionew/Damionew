@@ -48,15 +48,16 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <ul class="nav navbar-nav navbar-right">
+            	<ul class="nav navbar-nav navbar-right">
                     <li  class="active"><a href="">相册 <span class="sr-only">(current)</span></a><p class="line-top hidden-xs"></p></li>
-                                        <li ><a href="">商城</a></li>
-                                        <li ><a href="">视频</a></li>
-                                        <li ><a href="">书籍</a></li>
-                                        <li ><a href="">其他</a></li>
-                                        <li ><a href="">其他2</a></li>
-                                    </ul>
-                            </div>
+                    <li ><a href="">商城</a></li>
+                    <li ><a href="">视频</a></li>
+                    <li ><a href="">书籍</a></li>
+                    <li ><a href="">其他</a></li>
+                    <li ><a href="/login">登录</a></li>
+                </ul>
+                
+            </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
@@ -69,7 +70,7 @@
    <div class="box">
 	<div class="picbox" style="height:155px" >
 		<ul class="piclist mainlist" >
-			<li th:each = "roll : ${roll}"><a href="" target="_blank"><img th:src="${roll.photo_url}" width="220" height="155" /></a></li>
+			<li th:each = "roll : ${roll}"><img th:src="${roll.photo_url}" width="220" height="155" /></li>
 		</ul>
         <ul class="piclist swaplist"></ul>
 	</div>
@@ -88,7 +89,7 @@
             </div>
             <div class="col-xs-6 col-md-3" th:each = "album : ${album}">
             	<div style = "height:150px">
-            		<a href="#" class="thumbnail">
+            		<a th:href="@{'/photo/detail?album_id='+${album.album_id}}" class="thumbnail">
 				      <img th:src="${album.photo_url}" alt="images/8.jpg" width="220" height="105">
 				    </a>
             	</div>

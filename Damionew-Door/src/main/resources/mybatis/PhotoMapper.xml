@@ -10,5 +10,7 @@
 		SELECT photo_url FROM gm_photo WHERE album_id = #{album_id} order by photo_date LIMIT 1
 	</select>
 	
-	
+	<select id="query_photo_detail" resultType = "Photo">
+		SELECT * FROM gm_photo WHERE album_id = #{album_id}
+	</select>
 </mapper>

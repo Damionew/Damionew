@@ -40,6 +40,7 @@ public class PhotoAlbumService {
 			map.put("photo_url", photo_url);
 			map.put("album_name", photoAlbum.getAlbum_name());
 			map.put("album_desc", photoAlbum.getAlbum_desc());
+			map.put("album_id", String.valueOf(photoAlbum.getAlbum_id()));
 			albumMap.add(map);
 		}
 		return albumMap;

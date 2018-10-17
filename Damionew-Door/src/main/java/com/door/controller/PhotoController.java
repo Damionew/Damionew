@@ -1,10 +1,13 @@
 package com.door.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.door.model.Photo;
 import com.door.service.PhotoAlbumService;
 import com.door.service.PhotoService;
 
@@ -38,9 +41,10 @@ public class PhotoController {
 	}
 	
 	@RequestMapping("/photo/detail")
-	@ApiOperation(value = "跳转相册详细页面")
-	public String photoDetail(Model model) {
-		
+	@ApiOperation(value = "跳转相册详细页面",notes = "URL通过album_id指向相册")
+	public String photoDetail(String album_id,Model model) {
+		List<Photo> photoList = photoService.query_photo_detail(album_id);
+		model.addAttribute("photoList", photoList);
 		return "photoDetail";
 	}
 }

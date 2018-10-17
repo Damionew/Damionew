@@ -22,4 +22,8 @@ public class PhotoService {
 		return photoMapper.query_roll();
 	}
 	
+	public List<Photo> query_photo_detail(String album_id) {
+		return photoMapper.query_photo_detail(album_id);
+	}
+	
 }

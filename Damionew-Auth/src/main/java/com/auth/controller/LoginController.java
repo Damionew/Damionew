@@ -2,6 +2,7 @@ package com.auth.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -26,7 +27,9 @@ public class LoginController {
 	 */
 	@ApiOperation(value = "登录")
 	@RequestMapping(value = "/login",method = RequestMethod.GET)
-	public String loginPage() {
+	public String loginPage(String url,HttpServletRequest request) {
+		HttpSession  session = request.getSession ();
+		session.setAttribute("url", url);
 		return "login";
 	}
 	
@@ -41,8 +44,9 @@ public class LoginController {
 	}
 	
 	@GetMapping(value = "/index")
-	public String index() {
-//		return commonFeign.commonIndex();
-		return "redirect:http://localhost:8004/index";
+	public String index(HttpServletRequest request) {
+		HttpSession  session = request.getSession ();
+		String url = (String) session.getAttribute("url");
+		return "redirect:"+url;
 	}
 }

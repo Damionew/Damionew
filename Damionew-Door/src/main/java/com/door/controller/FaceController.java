@@ -51,14 +51,13 @@ public class FaceController {
 	} 
 	
 	@ResponseBody
-	@RequestMapping(value = "/face/search/file",method=RequestMethod.POST)
+	@RequestMapping(value = "/face/search/file",headers="content-type=multipart/*" ,method=RequestMethod.POST)
 	public String FaceSearchFile(@RequestParam("file") MultipartFile file) {
 		// 转二进制
 		byte[] bytes = null;
 		try {
 			bytes = file.getBytes();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// 转码
@@ -72,12 +71,18 @@ public class FaceController {
         String groupId = "test_group";
         // 人脸搜索
         JSONObject res = client.search(image, imageType, groupId, options);
-        JSONObject result = res.getJSONObject("result");
-        JSONArray user_list = result.getJSONArray("user_list");
-        JSONObject user_info = user_list.getJSONObject(0);
-        String user_name = user_info.getString("user_info");
         com.alibaba.fastjson.JSONObject object = new com.alibaba.fastjson.JSONObject();
-        object.put("user_name", user_name);
+	        JSONObject result = res.getJSONObject("result");
+	        JSONArray user_list = result.getJSONArray("user_list");
+	        JSONObject user_info = user_list.getJSONObject(0);
+	        String user_name = user_info.getString("user_info");
+	        Double score = (Double) user_info.get("score");
+	        if(score > 90) {
+	        	object.put("user_name", user_name);
+	        }else {
+	        	object.put("user_name", "库中匹配度不足");
+	        }
+	        
  		return object.toJSONString();
 	} 
 	

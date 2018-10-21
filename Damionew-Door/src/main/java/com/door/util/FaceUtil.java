@@ -3,11 +3,10 @@ package com.door.util;
 import java.util.HashMap;
 
 import org.json.JSONObject;
-import org.springframework.stereotype.Component;
 
 import com.baidu.aip.face.AipFace;
 
-@Component
+//@Component
 public class FaceUtil {
 	// 设置
 	public static final String APP_ID = "14482860";

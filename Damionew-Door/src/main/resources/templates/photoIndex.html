@@ -5,27 +5,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="renderer" content="webkit">
-    <!-- 目前仅限360急速浏览 webkit:急速  ie-comp:ie兼容模式   ie-stand: ie标准模式 -->
     <title>相册</title>
-    <!-- Bootstrap中文字体版 -->
     <link href="http://www.clantrip.com/static/bootstrap-font/css/bootstrap.min.css" rel="stylesheet">
-    <!-- 自定义样式 -->
     <link href="http://www.clantrip.com/static/css/common.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://www.clantrip.com/static/js/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="http://www.clantrip.com/static/bootstrap-font/js/bootstrap.min.js"></script>
-    <link type="text/css" href="/css/zzsc.css" rel="stylesheet" />
-	<script type="text/javascript" src="/js/jquery.js"></script>
-	<script type="text/javascript" src="/js/zzsc.js"></script>
+    <link type="text/css" th:href="@{/css/zzsc.css}" rel="stylesheet" />
+	<script type="text/javascript" th:src="@{/js/jquery.js]"></script>
+	<script type="text/javascript" th:src="@{/js/zzsc.js}"></script>
 </head>
 
 <body>
@@ -42,11 +30,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <!-- <a class="navbar-brand" style="padding:0 0 0 15px;" href=""> -->
                 <h3 style="    margin-top: 11px;">Photo</h3>
-                <!-- <img alt="Brand" style="max-width:130px;" src=""></a> -->
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             	<ul class="nav navbar-nav navbar-right">
                     <li  class="active"><a href="">相册 <span class="sr-only">(current)</span></a><p class="line-top hidden-xs"></p></li>
@@ -54,16 +39,13 @@
                     <li ><a href="">视频</a></li>
                     <li ><a href="">书籍</a></li>
                     <li ><a href="">其他</a></li>
-                    <li ><a href="/door/login">登录</a></li>
+                    <li ><a th:href="@{/door/login}">登录</a></li>
                 </ul>
                 
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container-fluid -->
     </nav>
 </div>
-<!-- <!-- 整站通用的头部及导航条 -->
 
 <!-- 全屏轮播图 -->
 <div id="carousel-example-generic" class="carousel slide my-slide" data-ride="carousel" style="margin-top: 100px;">

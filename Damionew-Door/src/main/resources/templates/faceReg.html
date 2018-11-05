@@ -4,30 +4,64 @@
 	<head>
 		<title>jQuery半透明注册表单 - 站长素材</title>
 		<meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-		<link rel="stylesheet" href="/reg_assets/css/demo.css">
-		<link rel="stylesheet" href="/reg_assets/css/sky-forms.css">
-		<script src="/reg_assets/js/jquery-1.9.1.min.js"></script>
-		<script src="/reg_assets/js/jquery.validate.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
+		<link rel="stylesheet" th:href="@{/reg_assets/css/demo.css}"/>
+		<link rel="stylesheet" th:href="@{/reg_assets/css/sky-forms.css}"/>
+		<script th:src="@{/reg_assets/js/jquery-1.9.1.min.js}"></script>
+		<link href="http://www.clantrip.com/static/bootstrap-font/css/bootstrap.min.css" rel="stylesheet"/>
+	    <link href="http://www.clantrip.com/static/css/common.css" rel="stylesheet"/>
+	    <script src="http://www.clantrip.com/static/js/jquery.min.js"></script>
+	    <script src="http://www.clantrip.com/static/bootstrap-font/js/bootstrap.min.js"></script>
+	    <link type="text/css" th:href="@{/css/zzsc.css}" rel="stylesheet" />
+		<script type="text/javascript" th:src="@{/js/zzsc.js}"></script>
 	</head>
 	
 	<body class="bg-cyan">
-		<div class="body body-s">		
-			<div  class="sky-form">
+		<div class="body body-s">	
+		<div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h3 style="    margin-top: 11px;">Photo</h3>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            	<ul class="nav navbar-nav navbar-right">
+                    <li ><a th:href="@{/faceIndex}">人脸识别首页</a></li>
+                    <li class="active"><a th:href="@{/faceReg}">人脸注册<span class="sr-only">(current)</span></a><p class="line-top hidden-xs"></p></li>
+                    <li ><a th:href="@{/faceSearch}">人脸搜索</a></li>
+                    <li ><a href="">书籍</a></li>
+                    <li ><a href="">其他</a></li>
+                    <li ><a href="/door/login">登录</a></li>
+                </ul>
+                
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</div>	
+			<div  class="sky-form" style="margin-top:20%">
 				<header>人脸注册</header>
-				
 				<fieldset>					
 					<section>
 						<label class="input">
 							<i class="icon-append icon-user"></i>
-							<input type="text" name="userId" placeholder="userId" id = "userId">
+							<input type="text" name="userId" placeholder="userId(英文)" id = "userId">
 						</label>
 					</section>
 					
 					<section>
 						<label class="input">
 							<i class="icon-append icon-envelope-alt"></i>
-							<input type="text" name="userInfo" placeholder="userInfo" id="userInfo">
+							<input type="text" name="userInfo" placeholder="userInfo(如：姓名)" id="userInfo">
 						</label>
 					</section>
 					
@@ -63,7 +97,6 @@
 		
 		<script type="text/javascript">
 		function face_reg(){
-			debugger
 			var userId = $("#userId").val();
 			var groupId = $("#groupId").val();
 			var userInfo = $("#userInfo").val();
@@ -71,7 +104,7 @@
 			var imageFile = $("#imageFile").val();
 			if (imageUrl != "") {
 				$.ajax({
-					url : "/face/reg/url",
+					url : "[[@{/}]]face/reg/url",
 					method : "post",
 					data : {
 						"userId" : userId,
@@ -91,17 +124,19 @@
 			if (imageFile != "") {
 				var formData = new FormData();  
 				formData.append('file',$("#imageFile")[0].files[0]);
+				formData.append('userId',userId);
+				formData.append('groupId',groupId);
+				formData.append('userInfo',userInfo);
 				$.ajax({
 					type: "POST",
 			        enctype: 'multipart/form-data',
-					url : "/facereg/file",
+					url : "[[@{/}]]face/reg/file",
 					data : formData,
 					processData: false,  
 		            contentType: false ,
 		            dataType : "json",
 					success : function(res) {
-						debugger
-						alert(res.user_name);
+						alert(res.result);
 					},
 					error : function() {
 						alert("请选择正确的人物图像");

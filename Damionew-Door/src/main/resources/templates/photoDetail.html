@@ -3,39 +3,22 @@
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Home</title>
-<!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700'
-	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
 <!-- font awesome -->
-<link
-	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
-	rel="stylesheet">
-<!-- bootstrap -->
-<link rel="stylesheet"
-	href="/photo_assets/bootstrap/css/bootstrap.min.css" />
-<!-- animate.css -->
-<link rel="stylesheet" href="/photo_assets/animate/animate.css" />
-<link rel="stylesheet" href="/photo_assets/animate/set.css" />
-<!-- gallery -->
-<link rel="stylesheet"
-	href="/photo_assets/gallery/blueimp-gallery.min.css">
-<!-- favicon -->
-<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-<link rel="icon" href="/images/photo_images/favicon.ico"
-	type="image/x-icon">
-<link rel="stylesheet" href="/photo_assets/style.css">
-<!-- jquery -->
-<script src="/photo_assets/jquery.js"></script>
-<!-- boostrap -->
-<script src="/photo_assets/bootstrap/js/bootstrap.js"
-	type="text/javascript"></script>
-<!-- gallery -->
-<script src="/photo_assets/gallery/jquery.blueimp-gallery.min.js"></script>
-<!-- custom script -->
-<script src="/photo_assets/script.js"></script>
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" th:href="@{/photo_assets/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/photo_assets/animate/animate.css}" />
+<link rel="stylesheet" th:href="@{/photo_assets/animate/set.css}" />
+<link rel="stylesheet" th:href="@{/photo_assets/gallery/blueimp-gallery.min.css}">
+<link rel="shortcut icon" th:href="@{images/favicon.ico}" type="image/x-icon">
+<link rel="icon" th:href="@{/images/photo_images/favicon.ico}" type="image/x-icon">
+<link rel="stylesheet" th:href="@{/photo_assets/style.css}">
+<script th:src="@{/photo_assets/jquery.js}"></script>
+<script th:src="@{/photo_assets/bootstrap/js/bootstrap.js}" type="text/javascript"></script>
+<script th:src="@{/photo_assets/gallery/jquery.blueimp-gallery.min.js}"></script>
+<script th:src="@{/photo_assets/script.js}"></script>
 </head>
 
 <body>
@@ -49,7 +32,7 @@
 					<div class="navbar-header">
 						<!-- Logo Starts -->
 						<a class="navbar-brand" href="#home"><img
-							src="/images/photo_images/logo.png" alt="logo"></a>
+							th:src="@{/images/photo_images/logo.png}" alt="logo"></a>
 						<!-- #Logo Ends -->
 						<button type="button" class="navbar-toggle collapsed"
 							data-toggle="collapse" data-target=".navbar-collapse">
@@ -61,16 +44,14 @@
 					<!-- Nav Starts -->
 					<div class="navbar-collapse  collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li class="active"><a href="/photo/index">Home</a></li>
+							<li class="active"><a th:href="@{/photo/index}">Home</a></li>
 							<li><a href="#about">About</a></li>
 							<li><a href="#partners">Partners</a></li>
 							<li><a href="#contact">Contact</a></li>
 						</ul>
 					</div>
-					<!-- #Nav Ends -->
 				</div>
 			</div>
-
 		</div>
 	</div>
 	<!-- #Header Starts -->
@@ -87,15 +68,10 @@
 			</figcaption>
 		</figure>
 	</div>
-	<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
-	<div id="blueimp-gallery"
-		class="blueimp-gallery blueimp-gallery-controls">
-		<!-- The container for the modal slides -->
+	<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
 		<div class="slides"></div>
-		<!-- Controls for the borderless lightbox -->
 		<h3 class="title">Title</h3>
 		<a class="prev">‹</a> <a class="next">›</a> <a class="close">×</a>
-		<!-- The modal dialog, which will be used to wrap the lightbox content -->
 	</div>
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.door.service;
 import java.util.HashMap;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +24,9 @@ public class FaceService {
 	
 	/**
 	 * 获取用户人脸列表
+	 * @throws JSONException 
 	 */
-	public void getUserFace() {
+	public void getUserFace() throws JSONException {
 		// 传入可选参数调用接口
 	    HashMap<String, String> options = new HashMap<String, String>();
 	    String userId = "user1";
@@ -36,8 +38,9 @@ public class FaceService {
 	
 	/**
 	 * 获取用户信息
+	 * @throws JSONException 
 	 */
-	public String getUserInfo(String userId,String groupId) {
+	public String getUserInfo(String userId,String groupId) throws JSONException {
 		// 传入可选参数调用接口
 	    HashMap<String, String> options = new HashMap<String, String>();
 	    // 用户信息查询
@@ -62,8 +65,9 @@ public class FaceService {
 	
 	/**
 	 * 获取用户列表
+	 * @throws JSONException 
 	 */
-	public JSONArray getUser(String groupId) {
+	public JSONArray getUser(String groupId) throws JSONException {
 		 // 传入可选参数调用接口
 	    HashMap<String, String> options = new HashMap<String, String>();
 	    options.put("start", "0");
@@ -87,8 +91,9 @@ public class FaceService {
 	
 	/**
 	 * 获取组列表
+	 * @throws JSONException 
 	 */
-	public JSONArray getgroup() {
+	public JSONArray getgroup() throws JSONException {
 		// 传入可选参数调用接口
 	    HashMap<String, String> options = new HashMap<String, String>();
 	    options.put("start", "0");
@@ -112,7 +117,7 @@ public class FaceService {
 	    }
 	}
 	
-	public String regFace(String imageUrl,String userId,String groupId,String userInfo) {
+	public String regFace(String imageUrl,String userId,String groupId,String userInfo) throws JSONException {
 		// 传入可选参数调用接口
 	    HashMap<String, String> options = new HashMap<String, String>();
 	    options.put("user_info", userInfo);
